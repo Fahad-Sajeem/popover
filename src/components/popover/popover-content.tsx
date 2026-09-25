@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { PopoverPadding } from "./popover";
+import { PopoverPadding, PopoverPlacement } from "./popover";
+import "./popover.css";
 
-export type NumericKeyboardContentProps = {
+export type PopoverContentProps = {
     content: React.ReactNode;
     childRef: React.RefObject<HTMLDivElement | null>;
     popoverPadding: PopoverPadding;
-    placement?: "rightBottomCorner" | "defaultPlacement" | "leftBottomCorner" | "rightTopCorner" | "leftTopCorner" | "top" | "bottom" | "right" | "left";
+    placement?: PopoverPlacement | "defaultPlacement";
 };
 
-export const PopoverContent: React.FunctionComponent<NumericKeyboardContentProps> = (props) => {
+export const PopoverContent: React.FunctionComponent<PopoverContentProps> = (props) => {
     const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
     const popoverRef = useRef<HTMLDivElement>(null);
 
@@ -166,15 +167,13 @@ export const PopoverContent: React.FunctionComponent<NumericKeyboardContentProps
 
     return (
         <div
-            className={`ant-popover position-absolute ${position ? "" : "invisible"}`}
+            className={`smart-popover ${position ? "" : "smart-popover-hidden"}`}
             ref={popoverRef}
-            style={{ top: position?.top || 0, left: position?.left || 0, zIndex: 1000 }}
+            style={{ top: position?.top || 0, left: position?.left || 0 }}
         >
-            <div className="ant-popover-content position-relative">
-                <div className="ant-popover-inner">
-                    <div className="ant-popover-inner-content">{props.content}</div>
-                </div>
+            <div className="smart-popover-inner">
+                <div className="smart-popover-inner-content">{props.content}</div>
             </div>
         </div>
     );
-}; 
+};

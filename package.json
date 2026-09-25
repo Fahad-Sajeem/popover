@@ -1,17 +1,52 @@
 {
-  "name": "testing-app",
+  "name": "react-smart-popover",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "cra-template-typescript": "1.2.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+  "description": "A lightweight React popover that anchors to a trigger element and repositions itself to stay inside the viewport.",
+  "author": "Fahad Sajeem",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fahad-Sajeem/popover.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Fahad-Sajeem/popover/issues"
+  },
+  "homepage": "https://github.com/Fahad-Sajeem/popover#readme",
+  "keywords": [
+    "react",
+    "popover",
+    "tooltip",
+    "dropdown",
+    "anchor",
+    "positioning",
+    "ui"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./style.css": "./dist/index.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "demo:build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,7 +69,14 @@
     ]
   },
   "devDependencies": {
+    "cra-template-typescript": "1.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^4.2.4",
     "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.2"
+    "@types/react-dom": "^19.0.2",
+    "typescript": "^5.4.5",
+    "tsup": "^8.3.5"
   }
 }
